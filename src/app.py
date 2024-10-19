@@ -8,7 +8,7 @@ from pickle import load
 app = Flask(__name__, template_folder='../templates')
 
 # Get the absolute path to the model file
-model_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "/workspaces/4Geeks-flask-render-self/models/KNeighborsRegressor_best_model.sav")
+model_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../models/KNeighborsRegressor_best_model.sav")
 model = load(open(model_path, "rb"))
 
 # Load the original dataset to find similar properties
