@@ -12,7 +12,16 @@ model_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../models
 model = load(open(model_path, "rb"))
 
 # Load the original dataset to find similar properties
-df = pd.read_csv('/workspaces/4Geeks-flask-render-self/data/cleaned_df.csv')
+# Construct the correct relative path for the CSV file
+csv_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../data", "cleaned_df.csv")
+
+# Debugging: Check if the CSV file exists and print the path
+print("CSV Path:", csv_path)
+if not os.path.exists(csv_path):
+    print("Error: CSV file not found!")
+
+# Load the CSV file
+df = pd.read_csv(csv_path)
 
 # Define home route
 @app.route('/', methods=['GET'])
